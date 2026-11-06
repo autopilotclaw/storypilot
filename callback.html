@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><title>StoryPilot – Connected</title></head>
+<body><main><header><img src="icon.png" alt=""><div><strong>StoryPilot</strong><br><small>TikTok connection</small></div></header>
+<div class="card"><h1 id="h">Connecting…</h1><p id="msg"></p>
+<p><input id="code" readonly style="width:100%;padding:12px;border-radius:10px;border:0;font:16px monospace"></p>
+<button id="copy" style="padding:12px 20px;border:0;border-radius:10px;background:#F2C230;font-weight:700;cursor:pointer">Copy code</button></div>
+<script>
+const p=new URLSearchParams(location.search);const c=p.get("code"),e=p.get("error");
+if(c){document.getElementById("h").textContent="Connected ✓";document.getElementById("msg").textContent="Copy this code and paste it into Claude Code. It expires in a few minutes.";document.getElementById("code").value=c;}
+else{document.getElementById("h").textContent="No code";document.getElementById("msg").textContent=e?("Error: "+e+" – "+(p.get("error_description")||"")):"Open this page only via the TikTok login.";document.getElementById("code").style.display="none";document.getElementById("copy").style.display="none";}
+document.getElementById("copy").onclick=()=>navigator.clipboard.writeText(c);
+</script></main></body></html>
